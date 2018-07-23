@@ -1,6 +1,8 @@
 package main
 
 import "github.com/gin-gonic/gin"
+import "os"
+import "fmt"
 
 func main() {
 	r := gin.Default()
@@ -11,5 +13,12 @@ func main() {
 
 	})
 
-	r.Run()
+	port := os.Getenv("APP_PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	fmt.Printf("\n\nRunning the app using port: %s\n", port)
+
+	r.Run(fmt.Sprintf("%s%s", ":", port))
 }
