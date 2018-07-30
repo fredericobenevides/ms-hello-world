@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: my-golang-app
+    image: my-golang-app
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 80
