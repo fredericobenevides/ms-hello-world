@@ -10,9 +10,9 @@ COPY . .
 RUN dep ensure
 RUN go build -o /go/bin/app_main .
 
-ENV APP_PORT 80
+ENV APP_PORT 8080
 ENV GIN_MODE release
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["/go/bin/app_main"]
