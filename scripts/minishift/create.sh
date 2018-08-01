@@ -3,6 +3,12 @@
 PROJECT=${PROJECT:=myapp-test}
 APP_NAME=${APP_NAME:=my-app}
 
+# This adds anyuid and hostaccess security context constraints to default service account
+# This is acceptable for a dev environment only
+oc login -u system:admin
+oc adm policy add-scc-to-user anyuid system:serviceaccount:$PROJECT:default
+oc adm policy add-scc-to-user hostaccess system:serviceaccount:$PROJECT:default
+
 echo "developer" | oc login -u developer
 
 oc new-project $PROJECT \
